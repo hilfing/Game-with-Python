@@ -1,4 +1,4 @@
-import sys
+import os
 import json
 import pygame
 import time
@@ -80,7 +80,7 @@ def crash():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
-                quit()
+                os._exit(0)
 
         button("Play Again", 150, 450, 100, 50, green, bright_green, game_loop)
         button("Quit", 550, 450, 100, 50, red, bright_red, quitgame)
@@ -107,7 +107,7 @@ def button(msg, x, y, w, h, ic, ac, action=None):
 
 def quitgame():
     pygame.quit()
-    quit()
+    os._exit(0)
 
 
 def unpause():
@@ -129,7 +129,7 @@ def paused():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
-                quit()
+                os._exit(0)
 
         button("Continue", 150, 450, 100, 50, green, bright_green, unpause)
         button("Quit", 550, 450, 100, 50, red, bright_red, quitgame)
@@ -146,7 +146,7 @@ def game_intro():
             # print(event)
             if event.type == pygame.QUIT:
                 pygame.quit()
-                quit()
+                os._exit(0)
 
         gameDisplay.fill(white)
         largeText = pygame.font.SysFont("comicsansms", 115)
@@ -189,7 +189,7 @@ def game_loop():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
-                quit()
+                os._exit(0)
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
@@ -263,7 +263,7 @@ def pre_run():
     else:
         print("Can't connect to server. Error code : " + str(r.status_code))
         pygame.quit()
-        sys.exit()
+        os._exit(0)
 
 def run():
     global gameDisplay, clock, carImg, gameIcon
@@ -279,7 +279,7 @@ def run():
     game_intro()
     game_loop()
     pygame.quit()
-    quit()
+    os._exit(0)
 
 
 run()
